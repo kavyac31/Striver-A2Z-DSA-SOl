@@ -1,0 +1,14 @@
+import java.util.*;
+public class Solution {
+    public static int[] getSecondOrderElements(int n, int []a) {
+        // Write your code here.
+        int[] res=new int[2];
+        Arrays.sort(a);
+        int s=a[1];
+        int l=a[n-2];
+        res[0]=l;
+        res[1]=s;
+        return(res);
+    }
+
+}
