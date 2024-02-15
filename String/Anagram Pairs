@@ -1,0 +1,32 @@
+import java.util.*;
+public class Solution {
+
+    public static boolean isAnagram(String str1, String str2) {
+        //Your code goes her
+        HashMap<Character,Integer> d=new HashMap<>();
+        if(str1.length()!=str2.length()){
+            return false;
+        }
+        for(int i=0;i<str2.length();i++){
+            char ct=str2.charAt(i);
+            int v=1;
+            if(d.containsKey(ct)){
+                v = d.get(ct) + 1;
+            }
+            d.put(ct,v);            
+        }
+        int n=str1.length();
+        for(int i=0;i<n;i++){
+            char ch=str1.charAt(i);
+            if(!d.containsKey(ch)){
+                return false;
+            }
+            d.put(ch, d.get(ch) - 1);
+            if (d.get(ch) == 0) {
+                d.remove(ch);
+            }
+        }
+        return d.isEmpty();
+    }
+
+}
