@@ -1,0 +1,58 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+     public Node prev;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data, Node next, Node prev)
+     {
+         this.data = data;
+         this.next = next;
+         this.prev = prev;
+     }
+ };
+
+ *****************************************************************/
+
+public class Solution
+{
+    public static Node constructDLL(int []arr) {
+        // Write your code here
+         Node t=null;
+         Node head=null;
+         Node current=null;
+         Node prev=null;
+         Node temp=null;
+        for(int i=0;i<arr.length;i++){
+           t= new Node(arr[i]);
+           if(head==null){
+               head=t;
+               current=head;
+           }
+           else{
+               current.next=t;
+               temp=current;
+               current =t;
+               current.prev=temp;
+           }
+        }
+        return head;
+    }
+}
