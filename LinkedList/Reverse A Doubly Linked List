@@ -1,0 +1,69 @@
+/****************************************************************
+
+ Following is the class structure of the Node class:
+
+ class Node {
+     public int data;
+     public Node next;
+     public Node prev;
+
+     Node()
+     {
+         this.data = 0;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data)
+     {
+         this.data = data;
+         this.next = null;
+         this.prev = null;
+     }
+
+     Node(int data, Node next)
+     {
+         this.data = data;
+         this.next = next;
+         this.prev = next;
+     }
+ };
+
+ *****************************************************************/
+import java.util.*;
+public class Solution
+{
+    public static Node reverseDLL(Node head)
+    {
+        // Write your code here.
+        //Brute Force Approach With Stack DataStructure
+       /* Node t=head;
+        Stack <Integer> st=new Stack<>();
+        while(t!=null){//O(n)
+            st.push(t.data);
+            t=t.next;
+        }
+        t=head;
+        while(t!=null){//O(n)
+            t.data=st.pop();
+            t=t.next;
+        }
+        return head;*/
+        //optimize approach
+        Node t=head;
+        Node temp=null;
+        if(t.next==null){
+            return head;
+        }
+        while(t!=null){
+            //Node p=t.next;
+            temp=t.prev;
+            t.prev=t.next;
+            t.next =temp;
+            t=t.prev;
+        }
+        //head=t.data;
+        return temp.prev;
+
+    }
+}
