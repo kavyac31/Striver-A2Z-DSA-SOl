@@ -1,0 +1,22 @@
+import java.util.*;
+public class Solution
+{
+    public static Node reverseLinkedList(Node head)
+    {
+        // Write your code here.
+        Node t=head;
+        Stack<Integer> st =new Stack<>();
+        while(t!=null){
+            st.push(t.data);
+            t=t.next;
+        }
+        t=head;
+        while(t!=null){
+            t.data=st.pop();
+            t=t.next;
+        }
+        return head;
+    }
+}
+    
+
