@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        // write your code here
+        ListNode t=head;
+        Stack<Integer> st=new Stack<>();
+        while(t!=null){
+            st.push(t.val);
+            t=t.next;
+        }
+        List<ListNode> l=new ArrayList<>();
+        t=head;
+        while(t!=null  && !st.isEmpty()){
+             if (t.val != st.pop()) {
+                return false;
+            }
+            t = t.next;
+        }
+        return true;
+    }
+}
