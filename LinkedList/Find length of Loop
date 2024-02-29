@@ -1,0 +1,29 @@
+import java.util.*;
+public class Solution
+{
+    public static int lengthOfLoop(Node head) {
+        // Write your code
+        if(head==null || head.next==null){
+            return 0;
+        }
+        Node s=head;
+        Node f=head;
+        while(f!=null && f.next!=null){
+            s=s.next;
+            f=f.next.next;
+            if(s==f){
+                break;
+            }
+        }
+        if(f==null || f.next==null){
+            return 0;
+        }
+        int i=1;
+        s=s.next;
+        while(s!=f){
+            s=s.next;
+            i+=1;
+        }
+        return i;
+    }
+}
