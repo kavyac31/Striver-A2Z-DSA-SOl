@@ -1,0 +1,47 @@
+class Solution {
+    public ListNode sortList(ListNode head) {
+           if(head==null || head.next==null){
+               return head;
+           }
+           ListNode m=find(head);
+           ListNode left=head;
+        ListNode right=m.next;
+        m.next=null;
+        ListNode l=sortList(left);
+        ListNode r=sortList(right);
+        return merge(l,r);
+        
+    }
+    public static ListNode merge(ListNode t1,ListNode t2){
+        ListNode dnode=new ListNode(-1);
+        ListNode temp=dnode;
+        while(t1!=null && t2!=null){
+            if(t1.val<t2.val){
+                temp.next=t1;
+                temp=t1;
+                t1=t1.next;
+            }
+            else{
+                temp.next=t2;
+                temp=t2;
+                t2=t2.next;
+            }
+        }
+        if(t1 !=null){
+            temp.next=t1;
+        }
+        else{
+            temp.next=t2;
+        }
+        return dnode.next;
+    }
+    public static ListNode find(ListNode head){
+        ListNode s=head;
+        ListNode f=head.next;
+        while(f!=null && f.next!=null){
+            s=s.next;
+            f=f.next.next;
+        }
+        return s;
+    }
+}
