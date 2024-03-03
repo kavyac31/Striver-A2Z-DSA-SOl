@@ -1,0 +1,20 @@
+import java.util.*;
+public class Solution
+{
+    public static Node sortList(Node head) {
+        // Write your code here
+         Node t=head;
+         ArrayList <Integer> l=new ArrayList<>();
+         while(t!=null) {
+              l.add(t.data);
+             t=t.next;
+         }
+         Collections.sort(l);
+         t=head;
+         for(int i=0;i<l.size();i++){
+             t.data=l.get(i);
+             t=t.next;
+         }
+         return head;
+    }
+}
