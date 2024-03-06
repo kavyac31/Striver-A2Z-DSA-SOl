@@ -1,0 +1,28 @@
+public class Solution {
+    static LinkedListNode addTwoNumbers(LinkedListNode head1, LinkedListNode head2) {
+        // Write your code here.
+        LinkedListNode t1=head1;
+        LinkedListNode t2=head2;
+        int c=0;
+        LinkedListNode d=new LinkedListNode(-1);
+        LinkedListNode t3=d;
+        while(t1!=null || t2!=null){
+             int s=c;
+             if(t1!=null){
+                 s+=t1.data;
+                 t1=t1.next;
+             }
+             if(t2!=null){
+                 s+=t2.data;
+                 t2=t2.next;
+             }
+             c=s/10;
+             t3.next=new LinkedListNode(s%10);
+             t3=t3.next;
+        }
+        if(c>0){
+            t3.next=new LinkedListNode(1);
+        }
+        return d.next;
+    }
+}
