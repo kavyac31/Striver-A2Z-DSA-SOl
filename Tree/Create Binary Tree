@@ -1,0 +1,22 @@
+public class Solution {
+    public static Node createTree(int []arr){
+        // Write your code here.
+         if(arr==null || arr.length == 0){
+            return null;
+        }
+           return createTree(arr, 0);
+    }
+    public static Node createTree(int arr[], int index){
+        if(index>=arr.length){
+            return null;
+        }
+
+        Node root = new Node(arr[index]); // Create new node with current element,
+        root.left = createTree(arr, 2*index+1); //call on left child
+       root.right = createTree(arr, 2*index+2); //call on right child
+        return root;
+
+    }
+    
+    
+}
