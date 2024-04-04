@@ -1,0 +1,19 @@
+import java.util.*;
+public class Solution {
+    public static boolean isBalancedBT(TreeNode<Integer> root) {
+        // Write your code here.
+        return Height (root) != -1;
+    }
+    public static int Height (TreeNode<Integer> root) {
+        if (root == null) return 0;
+        
+        int leftHeight = Height (root.left);
+        if (leftHeight == -1) return -1;
+        int rightHeight = Height (root.right);
+        if (rightHeight == -1) return -1;
+        
+        if (Math.abs(leftHeight - rightHeight) > 1)  return -1;
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+ }
+
